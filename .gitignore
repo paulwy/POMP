@@ -1,0 +1,40 @@
+# Rust
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Frontend
+node_modules/
+dist/
+.next/
+.cache/
+
+# Markdown documents (except README.md)
+*.md
+!README.md
+
+# Docs directory
+docs/
