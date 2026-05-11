@@ -79,6 +79,22 @@ cd backend/core
 sqlx migrate run
 ```
 
+**迁移文件规范：**
+- 所有 `CREATE TABLE` 语句必须使用 `CREATE TABLE IF NOT EXISTS`
+- 所有 `CREATE INDEX` 语句必须使用 `CREATE INDEX IF NOT EXISTS`
+- 外键约束必须使用 PL/pgSQL 条件判断（PostgreSQL 不支持 `ALTER TABLE ADD CONSTRAINT IF NOT EXISTS`）：
+```sql
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT FROM information_schema.table_constraints WHERE table_name = 'table_name' AND constraint_name = 'constraint_name') THEN
+        ALTER TABLE table_name ADD CONSTRAINT constraint_name FOREIGN KEY (column) REFERENCES other_table(id);
+    END IF;
+END $$;
+```
+
+**自动迁移：**
+服务启动时会自动执行未完成的数据库迁移，无需手动运行 `sqlx migrate run`。迁移文件必须保持幂等性，确保可以安全重复执行。
+
 ## API 文档
 
 - 健康检查: `GET /api/health`
