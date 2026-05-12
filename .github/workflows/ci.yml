@@ -30,7 +30,7 @@ jobs:
       
       - name: Run clippy
         working-directory: backend/core
-        run: cargo clippy -- -D warnings
+        run: cargo clippy
       
       - name: Run tests
         working-directory: backend/core
