@@ -5,6 +5,7 @@
 ### 1.1 项目目标
 
 为企业管理系统提供全面的 AI 辅助功能，包括：
+
 - 文档 AI 助手（优化、API 文档生成、大纲生成、Markdown 格式化）
 - 审批评论 AI 生成与优化
 - 会议纪要 AI 生成与优化
@@ -59,6 +60,7 @@
 ### 3.1 已实现功能
 
 #### 3.1.1 文档 AI 助手
+
 - ✅ 文档内容优化
 - ✅ API 文档生成（支持多种编程语言）
 - ✅ 文档大纲生成
@@ -66,12 +68,14 @@
 - ✅ 文生图功能
 
 #### 3.1.2 审批评论 AI
+
 - ✅ 审批意见自动生成
 - ✅ 支持多种审批决定（同意、拒绝、需补充、需修改）
 - ✅ 多种语言风格（正式、温和、严格）
 - ✅ 已有评论优化
 
 #### 3.1.3 会议纪要 AI
+
 - ✅ 会议纪要自动生成
 - ✅ 多种风格（正式、简洁、详细）
 - ✅ 关键要点提取
@@ -79,6 +83,7 @@
 - ✅ 已有纪要优化
 
 #### 3.1.4 英文辅助 AI
+
 - ✅ 中英文双向翻译
 - ✅ 命名规范建议（驼峰、下划线、帕斯卡、短横线）
 - ✅ 英文描述生成
@@ -145,7 +150,7 @@
 
 #### 4.1.1 翻译接口
 
-**POST /api/v1/english-ai/translate**
+### POST /api/v1/english-ai/translate**
 
 **请求**:
 
@@ -179,7 +184,7 @@
 
 #### 4.1.2 描述生成接口
 
-**POST /api/v1/english-ai/generate-description**
+### POST /api/v1/english-ai/generate-description**
 
 **请求**:
 
@@ -208,7 +213,7 @@
 
 #### 4.1.3 命名规范建议接口
 
-**POST /api/v1/english-ai/suggest-naming**
+### POST /api/v1/english-ai/suggest-naming**
 
 **请求**:
 
@@ -236,7 +241,7 @@
 
 #### 4.1.4 术语库查询接口
 
-**GET /api/v1/english-ai/terminology?category=field&query=部门**
+### GET /api/v1/english-ai/terminology?category=field&query=部门**
 
 **响应**:
 
@@ -265,20 +270,24 @@
 ### 4.2 其他现有 AI API（简要）
 
 #### 4.2.1 文档 AI API
+
 - `POST /api/v1/document-ai/optimize` - 优化文档
 - `POST /api/v1/document-ai/generate-api-doc` - 生成 API 文档
 - `POST /api/v1/document-ai/generate-outline` - 生成大纲
 - `POST /api/v1/document-ai/format-markdown` - 格式化 Markdown
 
 #### 4.2.2 审批评论 AI API
+
 - `POST /api/v1/approval-ai/generate` - 生成审批意见
 - `POST /api/v1/approval-ai/optimize` - 优化审批意见
 
 #### 4.2.3 会议纪要 AI API
+
 - `POST /api/v1/meeting-ai/generate-minutes` - 生成会议纪要
 - `POST /api/v1/meeting-ai/optimize-minutes` - 优化会议纪要
 
 #### 4.2.4 文生图 API
+
 - `POST /api/v1/ai/generate-image` - 生成图片
 - `GET /api/v1/ai/status` - 获取 AI 服务状态
 
@@ -404,13 +413,14 @@ ENGLISH_AI_MAX_TOKENS=1000
 ## 10. 使用说明
 
 详细的使用指南请参阅：
+
 - [英文辅助功能使用指南](./ENGLISH_ASSISTANT_GUIDE.md)
 
 ---
 
 ## 11. 参考资源
 
-- Together AI 文档: https://docs.together.ai
-- Hugging Face 文档: https://huggingface.co/docs
-- Axum 框架: https://github.com/tokio-rs/axum
-- React 文档: https://react.dev
+- Together AI 文档: <https://docs.together.ai>
+- Hugging Face 文档: <https://huggingface.co/docs>
+- Axum 框架: <https://github.com/tokio-rs/axum>
+- React 文档: <https://react.dev>
