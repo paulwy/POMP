@@ -1,0 +1,2 @@
+ALTER TABLE IF EXISTS cms_article_reviews
+    ADD COLUMN IF NOT EXISTS reviewed_at TIMESTAMPTZ;

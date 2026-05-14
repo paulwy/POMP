@@ -1,0 +1,182 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  darkMode: ["class"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  prefix: "",
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+          light: "hsl(var(--primary-light))",
+          dark: "hsl(var(--primary-dark))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        info: {
+          DEFAULT: "hsl(var(--info))",
+          foreground: "hsl(var(--info-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        gray: {
+          50: "hsl(var(--gray-50))",
+          100: "hsl(var(--gray-100))",
+          200: "hsl(var(--gray-200))",
+          300: "hsl(var(--gray-300))",
+          400: "hsl(var(--gray-400))",
+          500: "hsl(var(--gray-500))",
+          600: "hsl(var(--gray-600))",
+          700: "hsl(var(--gray-700))",
+          800: "hsl(var(--gray-800))",
+          900: "hsl(var(--gray-900))",
+          950: "hsl(var(--gray-950))",
+        },
+        chart: {
+          primary: "hsl(var(--chart-primary))",
+          "primary-light": "hsl(var(--chart-primary-light))",
+          secondary: "hsl(var(--chart-secondary))",
+          "secondary-light": "hsl(var(--chart-secondary-light))",
+          success: "hsl(var(--chart-success))",
+          "success-light": "hsl(var(--chart-success-light))",
+          warning: "hsl(var(--chart-warning))",
+          "warning-light": "hsl(var(--chart-warning-light))",
+          danger: "hsl(var(--chart-danger))",
+          "danger-light": "hsl(var(--chart-danger-light))",
+          info: "hsl(var(--chart-info))",
+          "info-light": "hsl(var(--chart-info-light))",
+          gray: "hsl(var(--chart-gray))",
+          "gray-light": "hsl(var(--chart-gray-light))",
+          "gray-lighter": "hsl(var(--chart-gray-lighter))",
+          1: "hsl(var(--chart-1))",
+          2: "hsl(var(--chart-2))",
+          3: "hsl(var(--chart-3))",
+          4: "hsl(var(--chart-4))",
+          5: "hsl(var(--chart-5))",
+        },
+      },
+      borderRadius: {
+        none: "var(--radius-none)",
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        DEFAULT: "var(--radius)",
+        lg: "var(--radius-lg)",
+        xl: "var(--radius-xl)",
+        "2xl": "var(--radius-2xl)",
+        "3xl": "var(--radius-3xl)",
+        full: "var(--radius-full)",
+      },
+      boxShadow: {
+        none: "var(--shadow-none)",
+        sm: "var(--shadow-sm)",
+        DEFAULT: "var(--shadow)",
+        md: "var(--shadow-md)",
+        lg: "var(--shadow-lg)",
+        xl: "var(--shadow-xl)",
+        "2xl": "var(--shadow-2xl)",
+      },
+      transitionDuration: {
+        instant: "var(--duration-instant)",
+        fast: "var(--duration-fast)",
+        DEFAULT: "var(--duration-normal)",
+        slow: "var(--duration-slow)",
+        slower: "var(--duration-slower)",
+      },
+      transitionTimingFunction: {
+        "in": "var(--ease-in)",
+        "out": "var(--ease-out)",
+        "in-out": "var(--ease-in-out)",
+        "bounce": "var(--ease-bounce)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "fade-out": {
+          from: { opacity: "1" },
+          to: { opacity: "0" },
+        },
+        "slide-in-from-bottom": {
+          from: { transform: "translateY(10px)", opacity: "0" },
+          to: { transform: "translateY(0)", opacity: "1" },
+        },
+        "slide-out-to-bottom": {
+          from: { transform: "translateY(0)", opacity: "1" },
+          to: { transform: "translateY(10px)", opacity: "0" },
+        },
+        "scale-in": {
+          from: { transform: "scale(0.95)", opacity: "0" },
+          to: { transform: "scale(1)", opacity: "1" },
+        },
+        "scale-out": {
+          from: { transform: "scale(1)", opacity: "1" },
+          to: { transform: "scale(0.95)", opacity: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in var(--duration-normal) var(--ease-out)",
+        "fade-out": "fade-out var(--duration-normal) var(--ease-out)",
+        "slide-in-from-bottom": "slide-in-from-bottom var(--duration-normal) var(--ease-out)",
+        "slide-out-to-bottom": "slide-out-to-bottom var(--duration-normal) var(--ease-out)",
+        "scale-in": "scale-in var(--duration-normal) var(--ease-out)",
+        "scale-out": "scale-out var(--duration-normal) var(--ease-out)",
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate")],
+}

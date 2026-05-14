@@ -1,0 +1,7 @@
+ALTER TABLE users DROP COLUMN IF EXISTS employee_no;
+ALTER TABLE users DROP COLUMN IF EXISTS hire_date;
+ALTER TABLE users DROP COLUMN IF EXISTS position_id;
+ALTER TABLE users DROP COLUMN IF EXISTS status;
+
+DROP TABLE IF EXISTS attendance_records;
+DROP TABLE IF EXISTS leave_requests;

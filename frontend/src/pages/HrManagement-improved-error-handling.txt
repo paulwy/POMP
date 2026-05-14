@@ -1,0 +1,63 @@
+// Improved error handling for HrManagement.tsx
+// Replace the handleCheckIn function (around line 338-348) with this:
+
+const handleCheckIn = async () => {
+  try {
+    await hrApi.checkIn({});
+    toast.success('打卡成功');
+    fetchTodayAttendance();
+    fetchAttendanceRecords();
+  } catch (error: any) {
+    console.error('打卡失败:', error);
+    
+    // Extract error message from response
+    const errorMsg = error.response?.data?.error || '打卡失败';
+    const status = error.response?.status;
+    
+    // Show appropriate message based on error type
+    if (status === 401 || errorMsg.includes('未授权')) {
+      toast.error('请先登录', {
+        onClose: () => {
+          // Optionally redirect to login page
+          window.location.href = '/login';
+        }
+      });
+    } else if (errorMsg.includes('已签到')) {
+      toast.warning('您今天已经打过卡了');
+    } else if (errorMsg.includes('签退')) {
+      toast.warning('请先签到再签退');
+    } else {
+      toast.error(errorMsg);
+    }
+  }
+};
+
+// Similarly, update handleCheckOut function (around line 350-360):
+
+const handleCheckOut = async () => {
+  try {
+    await hrApi.checkOut({});
+    toast.success('签退成功');
+    fetchTodayAttendance();
+    fetchAttendanceRecords();
+  } catch (error: any) {
+    console.error('签退失败:', error);
+    
+    const errorMsg = error.response?.data?.error || '签退失败';
+    const status = error.response?.status;
+    
+    if (status === 401 || errorMsg.includes('未授权')) {
+      toast.error('请先登录', {
+        onClose: () => {
+          window.location.href = '/login';
+        }
+      });
+    } else if (errorMsg.includes('未签到')) {
+      toast.warning('您还没有签到');
+    } else if (errorMsg.includes('已签退')) {
+      toast.warning('您今天已经签退过了');
+    } else {
+      toast.error(errorMsg);
+    }
+  }
+};
