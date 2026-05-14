@@ -1,3 +1,4 @@
+use bigdecimal::{BigDecimal, ToPrimitive};
 use chrono::{DateTime, NaiveDate, Utc};
 use serde::{Deserialize, Serialize};
 use sqlx::FromRow;
@@ -197,14 +198,14 @@ pub struct UpdateProjectResource {
     pub description: Option<String>,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, FromRow)]
+#[derive(Debug, Clone, FromRow)]
 pub struct ProjectRisk {
     pub id: Uuid,
     pub project_id: Uuid,
     pub title: String,
     pub description: Option<String>,
     pub risk_level: String,
-    pub probability: f64,
+    pub probability: BigDecimal,
     pub impact: String,
     pub mitigation_plan: Option<String>,
     pub owner_id: Option<Uuid>,
@@ -213,13 +214,36 @@ pub struct ProjectRisk {
     pub updated_at: DateTime<Utc>,
 }
 
+impl Serialize for ProjectRisk {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut state = serializer.serialize_struct("ProjectRisk", 12)?;
+        state.serialize_field("id", &self.id)?;
+        state.serialize_field("project_id", &self.project_id)?;
+        state.serialize_field("title", &self.title)?;
+        state.serialize_field("description", &self.description)?;
+        state.serialize_field("risk_level", &self.risk_level)?;
+        state.serialize_field("probability", &self.probability.to_f64().unwrap_or(0.0))?;
+        state.serialize_field("impact", &self.impact)?;
+        state.serialize_field("mitigation_plan", &self.mitigation_plan)?;
+        state.serialize_field("owner_id", &self.owner_id)?;
+        state.serialize_field("status", &self.status)?;
+        state.serialize_field("created_at", &self.created_at)?;
+        state.serialize_field("updated_at", &self.updated_at)?;
+        state.end()
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CreateProjectRisk {
     pub title: String,
     pub description: Option<String>,
+    pub probability: f64,
+    pub impact: String,
     pub risk_level: String,
-    pub probability: i32,
-    pub impact: i32,
     pub mitigation_plan: Option<String>,
     pub owner_id: Option<String>,
 }
@@ -228,9 +252,9 @@ pub struct CreateProjectRisk {
 pub struct UpdateProjectRisk {
     pub title: Option<String>,
     pub description: Option<String>,
+    pub probability: Option<f64>,
+    pub impact: Option<String>,
     pub risk_level: Option<String>,
-    pub probability: Option<i32>,
-    pub impact: Option<i32>,
     pub mitigation_plan: Option<String>,
     pub owner_id: Option<String>,
     pub status: Option<String>,

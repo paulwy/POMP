@@ -545,7 +545,7 @@ impl ProjectRepo {
     ) -> Result<ProjectRisk, sqlx::Error> {
         let id = Uuid::new_v4();
         let now = Utc::now();
-        let probability = BigDecimal::from_i32(data.probability).unwrap_or_default();
+        let probability = BigDecimal::from_f64(data.probability).unwrap_or_default();
         let owner_id = data.owner_id.and_then(|s| Uuid::parse_str(&s).ok());
 
         let risk = query_as::<_, ProjectRisk>(
@@ -591,7 +591,7 @@ impl ProjectRepo {
         data: UpdateProjectRisk,
     ) -> Result<Option<ProjectRisk>, sqlx::Error> {
         let now = Utc::now();
-        let probability = data.probability.map(|v| BigDecimal::from_i32(v).unwrap_or_default());
+        let probability = data.probability.map(|v| BigDecimal::from_f64(v).unwrap_or_default());
         let owner_id = data.owner_id.and_then(|s| Uuid::parse_str(&s).ok());
 
         let risk = query_as::<_, ProjectRisk>(
