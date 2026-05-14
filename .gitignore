@@ -33,3 +33,10 @@ dist/
 .cache/
 .parcel-cache/
 .vite/
+
+# Documentation
+docs/
+*.md
+!README.md
+!CONTRIBUTING.md
+!LICENSE
